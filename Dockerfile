@@ -1,4 +1,4 @@
-FROM nvidia/cuda:12.1.1-cudnn8-devel-ubuntu22.04
+FROM nvidia/cuda:12.1.1-cudnn8-devel-ubuntu24.04
 
 ENV DEBIAN_FRONTEND=noninteractive \
     TZ=America/Los_Angeles
@@ -46,7 +46,7 @@ WORKDIR $HOME/app
 # Copy the current directory contents into the container at $HOME/app setting the owner to the user
 
 RUN git clone https://github.com/comfyanonymous/ComfyUI . && git checkout 39e75862b248a20e8233ccee743ba5b2e977cdcf && \
-    pip install xformers!=0.0.18 --no-cache-dir -r requirements.txt --extra-index-url https://download.pytorch.org/whl/cu121
+    pip install xformers!=0.0.18 --no-cache-dir -r requirements.txt torch torchvision torchaudio --extra-index-url https://download.pytorch.org/whl/cu124
 
 # Checkpoints
 
